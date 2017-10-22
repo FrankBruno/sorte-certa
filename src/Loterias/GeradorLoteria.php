@@ -12,7 +12,7 @@ class GeradorLoteria
      * @param LoteriaInterface $loteria
      * @return Loteria
      */
-    public function gerar(LoteriaInterface $loteria)
+    public static function gerar(LoteriaInterface $loteria)
     {
         return new Loteria(
             $loteria->getNome(),
