@@ -13,7 +13,7 @@ class Minas5 implements LoteriaInterface
      */
     public function getNome(): string
     {
-        return self::class;
+        return 'Minas5';
     }
 
     /**

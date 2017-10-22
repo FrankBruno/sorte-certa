@@ -13,7 +13,7 @@ class Lotofacil implements LoteriaInterface
      */
     public function getNome(): string
     {
-        return self::class;
+        return 'Lotofacil';
     }
 
     /**

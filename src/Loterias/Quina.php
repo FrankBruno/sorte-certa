@@ -13,7 +13,7 @@ class Quina implements LoteriaInterface
      */
     public function getNome(): string
     {
-        return self::class;
+        return 'Quina';
     }
 
     /**

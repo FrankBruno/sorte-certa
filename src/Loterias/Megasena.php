@@ -13,7 +13,7 @@ class Megasena implements LoteriaInterface
      */
     public function getNome(): string
     {
-        return self::class;
+        return 'Megasena';
     }
 
     /**
@@ -53,6 +53,6 @@ class Megasena implements LoteriaInterface
      */
     public function getNumeracao(): array
     {
-        return rand(1, 60);
+        return range(1, 60);
     }
 }
