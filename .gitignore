@@ -5,4 +5,14 @@
 /public/bundles/
 /var/
 /vendor/
+/src/Arquivos/Duplasena/combinacoes.txt
+/src/Arquivos/Lotofacil/combinacoes.txt
+/src/Arquivos/Megasena/combinacoes.txt
+/src/Arquivos/Minas5/combinacoes.txt
+/src/Arquivos/Quina/combinacoes.txt
+
 ###< symfony/framework-bundle ###
+
+###> symfony/web-server-bundle ###
+.web-server-pid
+###< symfony/web-server-bundle ###
