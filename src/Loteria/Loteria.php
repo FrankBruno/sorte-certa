@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Loterias;
+namespace App\Loteria;
 
 /**
  * Interface Loteria
@@ -35,21 +35,16 @@ class Loteria
 
     /**
      * Loteria constructor.
-     * @param string $nome
-     * @param int $quantidadeNumeros
-     * @param int $quantidadeNumerosSorteados
-     * @param int $quantidadeMinimaNumerosEscolher
-     * @param int $quantidadeMaximaNumerosEscolher
-     * @param array $numeracao
+     * @param Origem $loteriaOrigem
      */
-    public function __construct($nome, $quantidadeNumeros, $quantidadeNumerosSorteados, $quantidadeMinimaNumerosEscolher, $quantidadeMaximaNumerosEscolher, array $numeracao)
+    public function __construct(Origem $loteriaOrigem)
     {
-        $this->nome = $nome;
-        $this->quantidadeNumeros = $quantidadeNumeros;
-        $this->quantidadeNumerosSorteados = $quantidadeNumerosSorteados;
-        $this->quantidadeMinimaNumerosEscolher = $quantidadeMinimaNumerosEscolher;
-        $this->quantidadeMaximaNumerosEscolher = $quantidadeMaximaNumerosEscolher;
-        $this->numeracao = $numeracao;
+        $this->nome = $loteriaOrigem::NOME;
+        $this->quantidadeNumeros = $loteriaOrigem::QUANTIDADE_NUMEROS;
+        $this->quantidadeNumerosSorteados = $loteriaOrigem::QUANTIDADE_NUMEROS_SORTEADOS;
+        $this->quantidadeMinimaNumerosEscolher = $loteriaOrigem::QUANTIDADE_MINIMA_NUMEROS_ESCOLHER;
+        $this->quantidadeMaximaNumerosEscolher = $loteriaOrigem::QUANTIDADE_MAXIMA_NUMEROS_ESCOLHER;
+        $this->numeracao = range(1, $loteriaOrigem::QUANTIDADE_NUMEROS);
     }
 
     /**

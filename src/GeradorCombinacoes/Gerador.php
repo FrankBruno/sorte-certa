@@ -9,11 +9,6 @@ namespace App\GeradorCombinacoes;
 class Gerador
 {
     /**
-     * @var Modelo
-     */
-    private $modelo;
-
-    /**
      * @var
      */
     private $conteudo;
@@ -22,16 +17,6 @@ class Gerador
      * @var int
      */
     private $quantidadeCombinacoes = 0;
-
-
-    /**
-     * Gerador constructor.
-     * @param Modelo $modelo
-     */
-    public function __construct(Modelo $modelo)
-    {
-        $this->modelo = $modelo;
-    }
 
     /**
      * @return int
@@ -42,14 +27,15 @@ class Gerador
     }
 
     /**
+     * @param Modelo $modelo
      * @return string
      */
-    public function gerarConteudo()
+    public function gerar(Modelo $modelo)
     {
-        return $this->gerar(
-            $this->modelo->getInicio(),
-            $this->modelo->getFim(),
-            $this->modelo->getAgrupamento()
+        return $this->gerarCombinacoes(
+            $modelo->getInicio(),
+            $modelo->getFim(),
+            $modelo->getAgrupamento()
         );
     }
 
@@ -59,14 +45,14 @@ class Gerador
      * @param int $limiteIncrementado
      * @param int $indiceIncrementado
      * @param array $arrau
-     * @return mixed
+     * @return string
      */
-    public function gerar($valorInicial, $valorLimite, $limiteIncrementado = 0, $indiceIncrementado= 1, $arrau = [])
+    private function gerarCombinacoes($valorInicial, $valorLimite, $limiteIncrementado = 0, $indiceIncrementado= 1, $arrau = [])
     {
         for ($i = $valorInicial; $i <= $valorLimite; $i++) {
             $novoArray = array_merge($arrau, [$i]);
             if ($indiceIncrementado < $limiteIncrementado) {
-                $this->gerar($i + 1, $valorLimite, $limiteIncrementado, $indiceIncrementado + 1, $novoArray);
+                $this->gerarCombinacoes($i + 1, $valorLimite, $limiteIncrementado, $indiceIncrementado + 1, $novoArray);
             } else {
                 $this->quantidadeCombinacoes++;
                 $this->conteudo .= implode(',', $novoArray) . PHP_EOL;

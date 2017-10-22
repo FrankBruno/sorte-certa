@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\Loterias\GeradorLoteria;
+use App\Loteria\GeradorLoteria;
 use App\GeradorCombinacoes\Gerador;
 use App\GeradorCombinacoes\ModeloFactory;
+use App\GeradorCombinacoes\GeradorArquivo;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -22,34 +23,24 @@ class GeradorCombinacoesController
      */
     public function geradorAction($nomeLoteria)
     {
-
         ini_set('memory_limit', -1);
         ini_set('max_execution_time', 0);
+        ini_set('display_errors', 0);
 
         $response = new Response();
         $response->headers->set('Content-Type', 'text/html');
 
         try {
 
-            $nomeLoteria = 'App\Loterias\\' . ucfirst($nomeLoteria);
-            $objetoLoteria = new $nomeLoteria();
-
-            $loteria = GeradorLoteria::gerar($objetoLoteria);
-
-            $modelo = ModeloFactory::criar(
-                1,
-                $loteria->getQuantidadeNumeros(),
-                $loteria->getQuantidadeNumerosSorteados()
+            $geradorArquivo = new GeradorArquivo(
+                GeradorLoteria::gerar($nomeLoteria),
+                new ModeloFactory(),
+                new Gerador()
             );
 
-            $gerador = new Gerador($modelo);
+            $geradorArquivo->gerar();
 
-            $nomeArquivo = __DIR__ . "/../Arquivos/{$loteria->getNome()}/combinacoes.txt";
-            file_put_contents($nomeArquivo, $gerador->gerarConteudo());
-
-            $mensagem = "Combinações da {$loteria->getNome()} do 1 ao {$loteria->getQuantidadeNumeros()}, em grupos de {$loteria->getQuantidadeNumerosSorteados()} foram geradas e salva no arquivo: {$nomeArquivo} .";
-
-            $response->setContent($mensagem);
+            $response->setContent($geradorArquivo->getMensagensGeracaoParaExibicao());
             $response->setStatusCode(Response::HTTP_CREATED);
 
         } catch (\Exception $e) {

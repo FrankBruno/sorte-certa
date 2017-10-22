@@ -14,7 +14,7 @@ class ModeloFactory
      * @param int $agrupamento
      * @return Modelo
      */
-    public static function criar($inicio, $fim, $agrupamento)
+    public function criar($inicio, $fim, $agrupamento)
     {
         return new Modelo($inicio, $fim, $agrupamento);
     }
