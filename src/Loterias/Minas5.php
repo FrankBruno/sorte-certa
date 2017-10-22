@@ -2,8 +2,6 @@
 
 namespace App\Loterias;
 
-use App\LoteriaInterface;
-
 /**
  * Class Minas5
  * @package App\Loterias

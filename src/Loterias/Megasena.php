@@ -2,8 +2,6 @@
 
 namespace App\Loterias;
 
-use App\LoteriaInterface;
-
 /**
  * Class Megasena
  * @package App\Loterias

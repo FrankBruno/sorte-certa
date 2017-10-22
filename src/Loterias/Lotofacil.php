@@ -2,8 +2,6 @@
 
 namespace App\Loterias;
 
-use App\LoteriaInterface;
-
 /**
  * Class Lotofacil
  * @package App\Loterias
