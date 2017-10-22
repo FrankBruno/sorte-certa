@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 /**
  * Class LoteriaController
  * @package App\Controller
- * @Route("/loteria")
+ * @Route("/loterias")
  */
 class LoteriaController extends Controller
 {
