@@ -1,12 +1,12 @@
 <?php
 
-namespace App\GeradorCombinacoes;
+namespace App\Gerador;
 
 /**
- * Class Gerador
+ * Class Combinacao
  * @package App\GeradorCombinacoes
  */
-class Gerador
+class Combinacao
 {
     /**
      * @var

@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Loteria\GeradorLoteria;
-use App\GeradorCombinacoes\Gerador;
-use App\GeradorCombinacoes\ModeloFactory;
-use App\GeradorCombinacoes\GeradorArquivo;
+use App\Gerador\Combinacao;
+use App\Gerador\ModeloFactory;
+use App\Gerador\Arquivo;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -32,10 +32,10 @@ class GeradorCombinacoesController
 
         try {
 
-            $geradorArquivo = new GeradorArquivo(
+            $geradorArquivo = new Arquivo(
                 GeradorLoteria::gerar($nomeLoteria),
                 new ModeloFactory(),
-                new Gerador()
+                new Combinacao()
             );
 
             $geradorArquivo->gerar();

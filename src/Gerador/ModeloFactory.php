@@ -1,6 +1,6 @@
 <?php
 
-namespace App\GeradorCombinacoes;
+namespace App\Gerador;
 
 /**
  * Class ModeloFactory

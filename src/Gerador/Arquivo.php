@@ -1,15 +1,15 @@
 <?php
 
-namespace App\GeradorCombinacoes;
+namespace App\Gerador;
 
 use App\Loteria\Loteria;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
- * Class GeradorArquivo
+ * Class Arquivo
  * @package App\GeradorCombinacoes
  */
-class GeradorArquivo
+class Arquivo
 {
     const DIRETORIO_ARQUIVOS = __DIR__ . '/../../var/arquivos/';
 
@@ -24,7 +24,7 @@ class GeradorArquivo
     private $modeloFactory;
 
     /**
-     * @var Gerador
+     * @var Combinacao
      */
     private $gerador;
 
@@ -44,12 +44,12 @@ class GeradorArquivo
     private $mensagensGeracao = [];
 
     /**
-     * GeradorArquivo constructor.
+     * Arquivo constructor.
      * @param Loteria $loteria
      * @param ModeloFactory $modeloFactory
-     * @param Gerador $gerador
+     * @param Combinacao $gerador
      */
-    public function __construct(Loteria $loteria, ModeloFactory $modeloFactory, Gerador $gerador)
+    public function __construct(Loteria $loteria, ModeloFactory $modeloFactory, Combinacao $gerador)
     {
         $this->loteria = $loteria;
         $this->modeloFactory = $modeloFactory;
